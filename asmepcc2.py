@@ -1,7 +1,7 @@
 import pandas as pd
 import math
 
-class repair_thinckness:
+class repair_thickness:
     def __init__(self, P, D, E_c, t_min, S, t_s, P_live,E_s):
         self.P = P
         self.D = D

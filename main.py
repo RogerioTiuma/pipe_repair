@@ -1,4 +1,4 @@
-import determination_thickness as dt
+import asmepcc2 as pcc2
 
 P = 1.
 D = 1.
@@ -9,6 +9,6 @@ t_s = 1.
 P_live = 1.
 E_s = 1.
 
-t = dt.repair_thinckness(P, D, E_c, t_min, S, t_s, P_live,E_s)
+t = pcc2.repair_thickness(P, D, E_c, t_min, S, t_s, P_live,E_s)
 
 print(t.epsl_c())
