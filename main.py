@@ -12,3 +12,4 @@ E_s = 1.
 t = pcc2.repair_thickness(P, D, E_c, t_min, S, t_s, P_live,E_s)
 
 print(t.epsl_c())
+#print(E_s)
