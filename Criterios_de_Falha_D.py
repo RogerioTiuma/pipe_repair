@@ -67,19 +67,30 @@ class CorrodedPipeline:
         ratio_l_Dt = self.l / math.sqrt(self.D * self.t)
 
         if ratio_w_D <= 0.3:
+            
             if ratio_l_Dt <= 5:
+                
                 C0 = 0.000194 + 0.0135 * (self.d / self.t) + 0.0221 * (self.d / self.t)**2
                 C1 = 0.00482 - 0.202 * (self.d / self.t) - 0.169 * (self.d / self.t)**2
                 C2 = 1.0604 - 0.253 * (self.d / self.t) + 0.194 * (self.d / self.t)**2
+                C3 = -4.016 + 13.195 * (self.d / self.t)
+                C4 = 1.583 - 5.337 * (self.d / self.t)
+                C5 = 0.975 + 0.00873 * (self.d / self.t)
+
                 Pb = (2 * self.t / (self.D - self.t)) * self.ru * (C0 * ratio_l_Dt**2 + C1 * ratio_l_Dt + C2) * (C3 * ratio_w_D**2 + C4 * ratio_w_D + C5)
+            
             else:
+                
                 C1 = 0.000238 - 0.0105 * (self.d / self.t)
                 C2 = 1.108 - 0.974 * (self.d / self.t)
                 C3 = -4.016 + 13.195 * (self.d / self.t)
                 C4 = 1.583 - 5.337 * (self.d / self.t)
-                C5 = 0.975 + 0.00873 * (self.d / self.t)
+                
+                
                 Pb = (2 * self.t / (self.D - self.t)) * self.ru * (C1 * ratio_l_Dt + C2) * (C3 * ratio_w_D**2 + C4 * ratio_w_D + C5)  
+        
         else:
+
             if ratio_l_Dt <= 5:
                 C0 = -0.00239 + 0.0308 * (self.d / self.t) - 0.00382 * (self.d / self.t)**2
                 C1 = 0.0314 - 0.381 * (self.d / self.t) + 0.101 * (self.d / self.t)**2
@@ -123,7 +134,7 @@ class CorrodedPipeline:
             Pb = (2 * self.t / (self.D - self.t)) * self.ru * (C2 * ratio_l_Dt**2 + C1 * ratio_l_Dt + C0) *(G2 * ratio_b_p**2 + G1 * ratio_b_p + G0)
         else:
 
-            Pb = 0
+            Pb = (2 * self.t / (self.D - self.t)) * self.ru * (C2 * ratio_l_Dt**2 + C1 * ratio_l_Dt + C0)
 
         return Pb
 
