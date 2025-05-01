@@ -15,7 +15,7 @@ L = 900.0        # Comprimento do Duto
 ################ Material do Duto ##############
 
 E_s = 1.         # Módulo de Elásticidade do Aço
-ry = 464.6           # Tensão de Escoamento
+ry = 464.6       # Tensão de Escoamento
 ru = 599.3       # Tensão de Última de Escoamento
 
 ########## Defeito #########
@@ -44,7 +44,7 @@ epsl_c = 1.
 
 t_min = pcc2.repair_thickness(P, D, E_c, ry, t_s, P_live,E_s,epsl_c).t_min()
 
-#print(t.t_min())
+print(t_min)
 #print(E_s)
 
 aco_1020 = Material.taterial(nome="Aço 1020",

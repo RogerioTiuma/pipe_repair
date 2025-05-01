@@ -38,7 +38,7 @@ class fail:
 
         # Damaged Factor/ Remaining Strength
         if A_f <= 50:
-            M_t = (1+0.6275*(L**2/D*t) - 0.00375*(L^2/D*t)**2)**(-1/2)
+            M_t = (1+0.6275*(L**2/D*t) - 0.00375*(L**2/D*t)**2)**(-1/2)
         else:
             M_t = 3.3+0.032*(L**2/D*t)
         
@@ -70,10 +70,10 @@ class fail:
     def RITCHIELAST(self,D,L,t,d, stress_u):
 
         #Bulging Factor
-        M_t = (1+0.8*(L^2/D*t))**(-1/2)
+        M_t = (1.0+0.8*(L^2/D*t))**(-1/2)
 
         # Damaged Factor/ Remaining Strength
-        alfa_teta = (1-(d/t)*(1/M_t))  /   (1-(d/t))
+        alfa_teta = (1.0-(d/t)*(1/M_t))  /   (1-(d/t))
 
         #Flow Stress
         stress_flow = 0.9*stress_u
@@ -84,17 +84,38 @@ class fail:
     
     def CHELL(self,D,L,t,d, stress_u):
 
+        R_d = D/2 - d # Raio médio do Defeito
+
         #Bulging Factor
-        M_t = (1+1.61*((math.pi()/8)**2)*(L^2/D*t))**(-1/2)
+        M_t = (1.0 + 1.61*((math.pi()/8)**2)*(L^2/R_d))**(-1/2)
 
         # Damaged Factor/ Remaining Strength
-        alfa_teta = (1-(d/t)*(1/M_t))  /   (1-(d/t))
+        alfa_teta = (1-(d/t) + (d/t)*(1/M_t))**(-1)
 
         #Flow Stress
-        stress_flow = 0.9*stress_u
+        stress_flow = 1.16*stress_u
 
         #Failure Pressure
         
         return alfa_teta, stress_flow
+    
+    """def SIMS(self,D,L,t,d, stress_u):
+        
+        R_t = 1 - d/t 
+
+        if 
+
+        #Bulging Factor
+        M_t = (1.0 + 1.61*((math.pi()/8)**2)*(L^2/R_d))**(-1/2)
+
+        # Damaged Factor/ Remaining Strength
+        alfa_teta = (1-(d/t) + (d/t)*(1/M_t))**(-1)
+
+        #Flow Stress
+        stress_flow = 1.16*stress_u
+
+        #Failure Pressure
+        
+        return alfa_teta, stress_flow"""
 
 

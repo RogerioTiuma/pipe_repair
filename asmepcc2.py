@@ -17,5 +17,5 @@ class repair_thickness:
         return epsl_c"""
     
     def t_min(self):
-        t_min = (1/(self.E_c*self.epsl_c))*(self.P*self.D/2 - self.S*self.t_s) #- self.S*(self.t_s/(self.E_c*self.t_min)) #- (self.P_live*self.D)/(2*self.E_c*self.epsl_c + self.E_s*self.epsl_c*self.t_s/self.t_min)
+        t_min = (1/(self.E_c*self.epsl_c))*(self.P*self.D/2 - self.S*self.t_s)
         return t_min
